@@ -1,0 +1,26 @@
+micronaut:
+  security:
+    enabled: false
+
+
+jackson:
+  date-format: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+  serialization:
+    write-dates-as-timestamps: false
+  deserialization:
+    adjust-dates-to-context-time-zone: false
+  datetime:
+    enabled: true
+    java-iso-by-default: true
+    module:
+      offset-time-format: HH-mm-ssXXX
+      offset-date-time-format: uuuu:MM:dd'T'HH:mm:ssXXX
+      zoned-date-time-format: uuuu:MM:dd'T'HH:mm:ssXXX['['VV']']
+      local-date-time-format: uuuu:MM:dd'T'HH:mm:ss.SSS
+      local-date-format: uuuu:MM:dd
+      local-time-format: HH-mm-ss
+      year-format: uuuu-
+      year-month-format: uuuu:MM
+      month-day-format: MM:dd
+      force-resolver-strict: true
+      force-iso-chronology: true
