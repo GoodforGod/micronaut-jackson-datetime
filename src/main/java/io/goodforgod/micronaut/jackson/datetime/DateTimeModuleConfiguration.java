@@ -3,10 +3,10 @@ package io.goodforgod.micronaut.jackson.datetime;
 import io.goodforgod.jackson.module.datetime.configuration.JavaTimeModuleConfiguration;
 
 /**
- * @author GoodforGod
- * @since 13.11.2019
+ * @author Anton Kurako (GoodforGod)
+ * @since 22.01.2022
  */
-public interface JacksonDateTimeConfiguration {
+public interface DateTimeModuleConfiguration {
 
     JavaTimeModuleConfiguration getConfiguration();
 }
