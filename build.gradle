@@ -16,11 +16,11 @@ repositories {
 group = groupId
 version = artifactVersion
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 micronaut {
-    version("3.2.4")
+    version("3.2.7")
     processing {
         incremental(true)
         module(project.name)
@@ -33,7 +33,9 @@ dependencies {
 
     compileOnly "io.micronaut:micronaut-inject-java"
 
-    implementation "org.jetbrains:annotations:22.0.0"
+    api "io.goodforgod:jackson-datetime-configuration:1.0.0"
+
+    implementation "io.micronaut:micronaut-jackson-databind"
 
     testAnnotationProcessor "io.micronaut:micronaut-inject-java"
 
@@ -47,7 +49,6 @@ dependencies {
 }
 
 test {
-    failFast(true)
     useJUnitPlatform()
     testLogging {
         showStandardStreams(false)
@@ -71,6 +72,14 @@ spotless {
         importOrder()
         removeUnusedImports()
         eclipse("4.21.0").configFile("${projectDir}/config/codestyle.xml")
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.organization", "goodforgod"
+        property "sonar.projectKey", "GoodforGod_micronaut-jackson-datetime"
     }
 }
 
