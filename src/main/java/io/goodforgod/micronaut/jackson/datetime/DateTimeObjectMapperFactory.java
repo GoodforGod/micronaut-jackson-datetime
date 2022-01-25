@@ -3,8 +3,8 @@ package io.goodforgod.micronaut.jackson.datetime;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.BeanSerializerModifier;
@@ -13,6 +13,7 @@ import io.micronaut.core.reflect.GenericTypeUtils;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.jackson.JacksonConfiguration;
 import io.micronaut.jackson.ObjectMapperFactory;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -33,6 +34,33 @@ public class DateTimeObjectMapperFactory extends ObjectMapperFactory {
 
     private static final String JACKSON_JSR10_MODULE_NAME = "jackson-datatype-jsr310";
 
+    /**
+     * Method implementation differs only by this code from original Micronaut {@link ObjectMapperFactory}
+     *
+     * Original factory:
+     * <code>
+     *      if (!hasConfiguration || jacksonConfiguration.isModuleScan()) {
+     *             objectMapper.findAndRegisterModules();
+     *      }
+     * </code>
+     *
+     * And this factory:
+     * <code>
+     *     if (!hasConfiguration || jacksonConfiguration.isModuleScan()) {
+     *             final List<Module> modules = ObjectMapper.findModules().stream()
+     *                     .filter(m -> !m.getModuleName().equals(JACKSON_JSR10_MODULE_NAME))
+     *                     .collect(Collectors.toList());
+     *
+     *             objectMapper.registerModules(modules);
+     *         }
+     * </code>
+     *
+     * This is done to avoid original Jackson DateTime module registration.
+     *
+     * @param jacksonConfiguration to use for mapper construction
+     * @param jsonFactory factory to use for mapper
+     * @return object mapper
+     */
     @Override
     public ObjectMapper objectMapper(JacksonConfiguration jacksonConfiguration, JsonFactory jsonFactory) {
         final ObjectMapper objectMapper = jsonFactory != null
