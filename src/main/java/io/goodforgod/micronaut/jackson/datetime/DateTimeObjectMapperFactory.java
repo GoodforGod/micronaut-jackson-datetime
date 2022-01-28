@@ -8,7 +8,6 @@ import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.jackson.JacksonConfiguration;
 import io.micronaut.jackson.ObjectMapperFactory;
-import jakarta.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,13 +26,6 @@ public class DateTimeObjectMapperFactory extends ObjectMapperFactory {
      * and {@link com.fasterxml.jackson.datatype.jsr310.JavaTimeModule}
      */
     private static final String JACKSON_JSR10_MODULE_NAME = "jackson-datatype-jsr310";
-
-    private final DateTimeConfiguration dateTimeConfiguration;
-
-    @Inject
-    public DateTimeObjectMapperFactory(DateTimeConfiguration dateTimeConfiguration) {
-        this.dateTimeConfiguration = dateTimeConfiguration;
-    }
 
     /**
      * @param jacksonConfiguration to use for mapper construction
