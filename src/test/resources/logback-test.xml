@@ -16,6 +16,6 @@
         <appender-ref ref="ASYNC"/>
     </root>
 
-    <logger level="DEBUG" name="io.goodforgod.micronaut.template"/>
+    <logger level="DEBUG" name="io.goodforgod.micronaut.jackson.datetime"/>
     <logger level="INFO" name="io.micronaut.runtime.Micronaut"/>
 </configuration>

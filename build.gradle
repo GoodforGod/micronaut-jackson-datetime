@@ -89,9 +89,9 @@ publishing {
             from components.java
 
             pom {
-                name = "micronaut-java-library-template"
+                name = "Micronaut Jackson DateTime"
                 url = "https://github.com/GoodforGod/$artifactId"
-                description = "Description."
+                description = "Micronaut Jackson Datetime module integration and configuration."
 
                 license {
                     name = "Apache License 2.0"
