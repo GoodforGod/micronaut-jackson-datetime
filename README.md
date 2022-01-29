@@ -11,7 +11,7 @@ You can read more about [module and its configuration here](https://github.com/G
 
 ## Dependency :rocket:
 
-Compatible with Java 8+.
+Compatible with Java 8 & Micronaut 3.
 
 **Gradle**
 ```groovy
